@@ -1,6 +1,6 @@
 {
   "name": "angular-daterangepicker-labworks",
-  "version": "0.2.29",
+  "version": "0.2.30",
   "homepage": "https://github.com/dmitryrazinkov/angular-daterangepicker",
   "description": "Angular.js wrapper for Dan Grosmann's bootstrap date range picker (https://github.com/dangrossman/bootstrap-daterangepicker).",
   "license": "MIT",
@@ -8,7 +8,7 @@
   "dependencies": {
     "angular": "^1.2.17",
     "bootstrap": "^3.0.0",
-    "bootstrap-daterangepicker-labworks": "^2.1.49"
+    "bootstrap-daterangepicker-labworks": "^2.1.50"
   },
   "main": "index.js",
   "devDependencies": {
