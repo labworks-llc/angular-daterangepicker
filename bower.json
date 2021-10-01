@@ -15,7 +15,7 @@
   "dependencies": {
     "angular": "^1.2.17",
     "bootstrap": "^3.0.0",
-    "bootstrap-daterangepicker-labworks": "^2.1.54"
+    "bootstrap-daterangepicker-labworks": "2.1.54"
   },
   "devDependencies": {
     "angular-messages": "^1.2.17"
