@@ -104,8 +104,13 @@ picker.directive 'dateRangePicker', ($compile, $timeout, $parse, dateRangePicker
         else
           x = val.split(opts.locale.separator).map(f)
           # Use startOf/endOf day to comply with how bootstrap-daterangepicker works
-          objValue.startDate = if x[0] then x[0].startOf('day') else null
-          objValue.endDate = if x[1] then x[1].endOf('day') else null
+          startDate = if x[0] then x[0].startOf('day') else null
+          endDate = if x[1] then x[1].endOf('day') else null
+
+          if startDate and !startDate.isValid() or endDate and !endDate.isValid() then return
+
+          objValue.startDate = startDate
+          objValue.endDate = endDate
       objValue
 
     modelCtrl.$isEmpty = (val) ->
@@ -139,7 +144,7 @@ picker.directive 'dateRangePicker', ($compile, $timeout, $parse, dateRangePicker
       el.on 'cancel.daterangepicker outsideClick.daterangepicker', (e, picker) ->
         if $scope.model and (opts.maxDate or opts.minDate)
           if opts.singleDatePicker
-            $scope.model = picker.startDate;
+            $scope.model = picker.startDate
           else if $scope.model.startDate && $scope.model.endDate
             $scope.model =
               startDate: picker.startDate,

@@ -109,7 +109,7 @@
           return el.val(modelCtrl.$viewValue);
         };
         modelCtrl.$parsers.push(function(val) {
-          var f, objValue, x;
+          var endDate, f, objValue, startDate, x;
           f = function(value) {
             return moment(value, opts.locale.format);
           };
@@ -122,8 +122,13 @@
               objValue = f(val);
             } else {
               x = val.split(opts.locale.separator).map(f);
-              objValue.startDate = x[0] ? x[0].startOf('day') : null;
-              objValue.endDate = x[1] ? x[1].endOf('day') : null;
+              startDate = x[0] ? x[0].startOf('day') : null;
+              endDate = x[1] ? x[1].endOf('day') : null;
+              if (startDate && !startDate.isValid() || endDate && !endDate.isValid()) {
+                return;
+              }
+              objValue.startDate = startDate;
+              objValue.endDate = endDate;
             }
           }
           return objValue;
