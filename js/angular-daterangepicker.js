@@ -182,6 +182,17 @@
               });
             }
           });
+          el.on('move.daterangepicker', function(e, picker) {
+            if (!opts.adjustDatePickerVertically) {
+                return
+            }
+            const bounding = e.target.getBoundingClientRect()
+            if (bounding.y < document.body.clientHeight/2) {
+              picker.drops = 'down'
+            } else {
+              picker.drops = 'up'
+            }
+        })
           results = [];
           for (eventType in opts.eventHandlers) {
             results.push(el.on(eventType, function(e) {
